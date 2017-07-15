@@ -1,0 +1,5 @@
+<resources>
+    <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
+    <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
+    <item name="ic_menu_setting" type="drawable">@drawable/ic_action_setting</item>
+</resources>

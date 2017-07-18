@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">NFC-Example</string>
+    <string name="fragment_card_title">Detail or Modification</string>
+    <string name="fragment_about_us">About us</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="fragment_card_name">Card`s Name</string>
+    <string name="fragment_card_number">Card`s Number</string>
+    <string name="fragment_card_message">Card`s Message</string>
+    <string name="card_title_hint">Input the card`s name</string>
+    <string name="card_card_no_hint">Input the card`s number</string>
+    <string name="card_message_hint">Input the card`s message</string>
+    <string name="card_number_label">The number of this card</string>
+    <string name="card_confirm_label">Confirm</string>
+
+    <string name="cards">Cards</string>
+    <string name="management">Management</string>
+    <string name="all_cards">All_Cards</string>
+    <string name="setting">Setting</string>
+    <string name="about_us">About us</string>
+
+    <string name="version">Version 0.03</string>
+    <string name="github_java">Github Repo (Java)</string>
+    <string name="github_kotlin">Github Repo (Kotlin)</string>
+    <string name="donate">Donate</string>
+    <string name="open_source">Open Source - Apache License v2</string>
+
+    <string name="confirm">Succeed!</string>
 </resources>

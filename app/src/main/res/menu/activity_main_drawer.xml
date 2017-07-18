@@ -3,27 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Kinds" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_action_setting"
-            android:title="Setting" />
-    </group>
-
-    <item android:title="You can..">
+    <item android:title="@string/cards">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_cards"
+                android:icon="@drawable/ic_action_cards"
+                android:title="@string/all_cards" />
+        </menu>
+    </item>
+
+    <item android:title="@string/management">
+        <menu>
             <item
-                android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_action_contact"
-                android:title="Contact us" />
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_action_setting"
+                android:title="@string/setting" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_action_about"
+                android:title="@string/about_us" />
         </menu>
     </item>
 </menu>

@@ -1,9 +1,10 @@
 package cc.metapro.nfc;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,33 +25,39 @@ public class NFCMainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Add a new card", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Card card = new Card();
+                CardLab.get(NFCMainActivity.this).addCard(card);
+                Intent intent = NFCCardActivity.newIntent(NFCMainActivity.this, card.getId());
+                startActivity(intent);
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        new RecyclerViewFragment();
+        if (getSupportFragmentManager().findFragmentById(R.id.fragment_container) == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, new RecyclerViewFragment())
+                    .commit();
+        }
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -63,17 +70,19 @@ public class NFCMainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_share) {
+        if (id == R.id.nav_cards) {
 
         } else if (id == R.id.nav_setting) {
 
-        }else if (id == R.id.nav_contact){
+            final Intent nfcintent = new Intent(Settings.ACTION_NFC_SETTINGS);
+            startActivity(nfcintent);
 
+        } else if (id == R.id.nav_about) {
+            Intent intent = AboutUsActivity.newIntent(this);
+            startActivity(intent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

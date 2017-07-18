@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NFC-Example</string>
+    <string name="fragment_card_title">详情与设置</string>
+    <string name="fragment_about_us">关于我们</string>
+    <string name="navigation_drawer_open">打开导航栏</string>
+    <string name="navigation_drawer_close">关闭导航栏</string>
+
+    <string name="fragment_card_name">卡片名</string>
+    <string name="fragment_card_number">卡片号</string>
+    <string name="fragment_card_message">卡片信息</string>
+    <string name="card_title_hint">输入卡片名</string>
+    <string name="card_card_no_hint">输入卡片号</string>
+    <string name="card_message_hint">输入卡片信息</string>
+    <string name="card_number_label">数量</string>
+    <string name="card_confirm_label">确认</string>
+
+    <string name="cards">NFC卡</string>
+    <string name="management">管理</string>
+    <string name="all_cards">所有卡片</string>
+    <string name="setting">设置</string>
+    <string name="about_us">关于我们</string>
+
+    <string name="version">版本号 0.03</string>
+    <string name="github_java">Github Repo (Java)</string>
+    <string name="github_kotlin">Github Repo (Kotlin)</string>
+    <string name="donate">捐赠</string>
+    <string name="open_source">Open Source - Apache License v2</string>
+
+    <string name="confirm">保存成功!</string>
+</resources>

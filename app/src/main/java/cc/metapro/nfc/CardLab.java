@@ -48,8 +48,8 @@ public class CardLab {
 
     public void addCard(Card c) {
         ContentValues values = getContentValues(c);
-
         mDatabase.insert(CardTable.NAME, null, values);
+
     }
 
     public List<Card> getCards() {

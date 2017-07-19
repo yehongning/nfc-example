@@ -142,8 +142,8 @@ public class RecyclerViewFragment extends Fragment {
             int swipeFlags=0;
 
             if(recyclerView.getLayoutManager() instanceof LinearLayoutManager){
-                dragFlags=ItemTouchHelper.UP|ItemTouchHelper.DOWN;
-                swipeFlags=ItemTouchHelper.START|ItemTouchHelper.END;
+                dragFlags=0;
+                swipeFlags=ItemTouchHelper.START;
             }
             return makeMovementFlags(dragFlags,swipeFlags);
         }
@@ -163,6 +163,7 @@ public class RecyclerViewFragment extends Fragment {
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
             int position=viewHolder.getAdapterPosition();
             CardLab.get(getActivity()).deleteCard(mCards.get(position));
             mCards.remove(position);

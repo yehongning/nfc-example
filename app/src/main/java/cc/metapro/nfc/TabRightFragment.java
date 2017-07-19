@@ -16,22 +16,11 @@ public class TabRightFragment extends Fragment {
 
     private TextView mTextView;
 
-    public static TabRightFragment newInstance() {
-        TabRightFragment fragment = new TabRightFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.card_tab_3, container, false);
-
+        View v = inflater.inflate(R.layout.card_tab_right, container, false);
         mTextView=v.findViewById(R.id.card_tab_3);
         return v;
     }

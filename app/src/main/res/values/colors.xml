@@ -7,4 +7,7 @@
     <color name="black">#312520</color>
     <color name="grayWhite">#BEBEBE</color>
     <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="Red">#EA0000</color>
+    <color name="thinRed">#FF7575</color>
 </resources>

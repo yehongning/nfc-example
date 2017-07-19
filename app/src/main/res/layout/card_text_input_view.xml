@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/a_textinputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="卡名">
+
+        <EditText
+            android:id="@+id/card_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/black"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/b_textinputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="卡号">
+        <EditText
+            android:id="@+id/card_card_no"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/c_textinputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="备注">
+        <EditText
+            android:id="@+id/card_message"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@color/thinRed"
+        app:tabSelectedTextColor="@color/Red"
+        app:tabTextColor="@color/Black">
+
+    </android.support.design.widget.TabLayout>
+</LinearLayout>

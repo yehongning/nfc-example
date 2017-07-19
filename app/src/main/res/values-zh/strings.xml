@@ -28,4 +28,8 @@
     <string name="open_source">Open Source - Apache License v2</string>
 
     <string name="confirm">保存成功!</string>
+
+    <string name="original_information">原始信息</string>
+    <string name="card_information">卡内信息</string>
+    <string name="transaction_information">收支信息</string>
 </resources>

@@ -27,4 +27,8 @@
     <string name="open_source">Open Source - Apache License v2</string>
 
     <string name="confirm">Succeed!</string>
+
+    <string name="original_information">Original Information</string>
+    <string name="card_information">Card Information</string>
+    <string name="transaction_information">Transaction_Information</string>
 </resources>

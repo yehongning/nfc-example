@@ -21,13 +21,17 @@ public class CardCursorWrapper extends CursorWrapper {
 
         String uuidString = getString(getColumnIndex(CardTable.Cols.UUID));
         String title = getString(getColumnIndex(CardTable.Cols.TITLE));
-        String cardNo = getString(getColumnIndex(CardTable.Cols.NO));
         String message = getString(getColumnIndex(CardTable.Cols.MESSAGE));
+        String originalInformation = getString(getColumnIndex(CardTable.Cols.OriginalInformation));
+        String cardInformation = getString(getColumnIndex(CardTable.Cols.CardInformation));
+        String transactionInformation = getString(getColumnIndex(CardTable.Cols.TransactionInformation));
 
         Card card = new Card(UUID.fromString(uuidString));
         card.setTitle(title);
-        card.setNo(cardNo);
         card.setMessage(message);
+        card.setOriginalInformation(originalInformation);
+        card.setCardInformation(cardInformation);
+        card.setTransactionInformation(transactionInformation);
 
         return card;
     }

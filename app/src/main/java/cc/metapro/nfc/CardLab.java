@@ -36,20 +36,22 @@ public class CardLab {
         return sCardLab;
     }
 
-    private static ContentValues getContentValues(Card card) {
-        ContentValues values = new ContentValues();
-        values.put(CardTable.Cols.UUID, card.getId().toString());
-        values.put(CardTable.Cols.TITLE, card.getTitle());
-        values.put(CardTable.Cols.NO, card.getNo());
-        values.put(CardTable.Cols.MESSAGE, card.getMessage());
-
-        return values;
+    public void addCard(Card card) {
+        ContentValues values = getContentValues(card);
+        mDatabase.insert(CardTable.NAME, null, values);
     }
 
-    public void addCard(Card c) {
-        ContentValues values = getContentValues(c);
-        mDatabase.insert(CardTable.NAME, null, values);
+    private static ContentValues getContentValues(Card card) {
+        ContentValues values = new ContentValues();
 
+        values.put(CardTable.Cols.UUID, card.getId().toString());
+        values.put(CardTable.Cols.TITLE, card.getTitle());
+        values.put(CardTable.Cols.MESSAGE, card.getMessage());
+        values.put(CardTable.Cols.OriginalInformation, card.getOriginalInformation());
+        values.put(CardTable.Cols.CardInformation, card.getCardInformation());
+        values.put(CardTable.Cols.TransactionInformation, card.getTransactionInformation());
+
+        return values;
     }
 
     public List<Card> getCards() {
@@ -67,6 +69,19 @@ public class CardLab {
             cursor.close();
         }
         return cards;
+    }
+
+    private CardCursorWrapper queryCards(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                CardTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return new CardCursorWrapper(cursor);
     }
 
     public Card getCard(UUID id) {
@@ -96,23 +111,10 @@ public class CardLab {
                 new String[]{uuidString});
     }
 
-    public void deleteCard(Card card){
+    public void deleteCard(Card card) {
         String uuidString = card.getId().toString();
 
-        mDatabase.delete(CardTable.NAME,CardTable.Cols.UUID + " = ?",
+        mDatabase.delete(CardTable.NAME, CardTable.Cols.UUID + " = ?",
                 new String[]{uuidString});
-    }
-
-    private CardCursorWrapper queryCards(String whereClause, String[] whereArgs) {
-        Cursor cursor = mDatabase.query(
-                CardTable.NAME,
-                null,
-                whereClause,
-                whereArgs,
-                null,
-                null,
-                null
-        );
-        return new CardCursorWrapper(cursor);
     }
 }

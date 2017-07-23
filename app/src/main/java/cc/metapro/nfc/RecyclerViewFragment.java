@@ -1,22 +1,20 @@
 package cc.metapro.nfc;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -45,7 +43,7 @@ public class RecyclerViewFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mItemTouchHelper=new ItemTouchHelper(new MyCallBack());
+        mItemTouchHelper = new ItemTouchHelper(new MyCallBack());
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
 
         updateUI();
@@ -79,21 +77,31 @@ public class RecyclerViewFragment extends Fragment {
 
     private class CardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
+        private static final String DIALOG_SIMULATE="DialogSimulate";
         private TextView mMainTitle;
         private TextView mSubTitle;
+        private Button mButton;
         private Card mCard;
 
         public CardHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             mMainTitle = itemView.findViewById(R.id.main_title);
-            mSubTitle=itemView.findViewById(R.id.sub_title);
+            mSubTitle = itemView.findViewById(R.id.sub_title);
+            mButton=itemView.findViewById(R.id.simulate);
+            mButton.setText(R.string.simulate);
+            mButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager manager=getFragmentManager();
+                    MyDialogFragment dialogFragment=new MyDialogFragment();
+                    dialogFragment.show(manager,DIALOG_SIMULATE);
+                }
+            });
         }
 
         @Override
         public void onClick(View view) {
-
             Intent intent = NFCCardActivity.newIntent(getActivity(), mCard.getId());
             startActivity(intent);
         }
@@ -101,8 +109,7 @@ public class RecyclerViewFragment extends Fragment {
         public void bindCard(Card card) {
             mCard = card;
             mMainTitle.setText(mCard.getTitle());
-            mSubTitle.setText(mCard.getNo());
-
+            mSubTitle.setText(mCard.getMessage());
         }
     }
 
@@ -139,41 +146,41 @@ public class RecyclerViewFragment extends Fragment {
         @Override
         public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
             int dragFlags = 0;
-            int swipeFlags=0;
+            int swipeFlags = 0;
 
-            if(recyclerView.getLayoutManager() instanceof LinearLayoutManager){
-                dragFlags=0;
-                swipeFlags=ItemTouchHelper.START;
+            if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+                dragFlags = 0;
+                swipeFlags = ItemTouchHelper.START;
             }
-            return makeMovementFlags(dragFlags,swipeFlags);
+            return makeMovementFlags(dragFlags, swipeFlags);
         }
 
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-            int from=viewHolder.getAdapterPosition();
-            int to=target.getAdapterPosition();
+            int from = viewHolder.getAdapterPosition();
+            int to = target.getAdapterPosition();
 
-            Card moveItem=mCards.get(from);
+            Card moveItem = mCards.get(from);
             mCards.remove(from);
-            mCards.add(to,moveItem);
+            mCards.add(to, moveItem);
 
-            mAdapter.notifyItemMoved(from,to);
+            mAdapter.notifyItemMoved(from, to);
             return true;
-        }
-
-        @Override
-        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
-            int position=viewHolder.getAdapterPosition();
-            CardLab.get(getActivity()).deleteCard(mCards.get(position));
-            mCards.remove(position);
-            mAdapter.notifyItemRemoved(position);
-
         }
 
         @Override
         public boolean isLongPressDragEnabled() {
             return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+            int position = viewHolder.getAdapterPosition();
+            CardLab.get(getActivity()).deleteCard(mCards.get(position));
+            mCards.remove(position);
+            mAdapter.notifyItemRemoved(position);
+
         }
     }
 }

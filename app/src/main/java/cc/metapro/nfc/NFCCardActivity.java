@@ -13,8 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +32,17 @@ public class NFCCardActivity extends AppCompatActivity {
     private final List<String> titles = new ArrayList<String>();
     private Card mCard;
     private List<Fragment> mFragments = new ArrayList<Fragment>();
+    private TabLeftFragment mLeftFragment;
+    private TabMiddleFragment mMiddleFragment;
+    private TabRightFragment mRightFragment;
 
     private TextInputLayout aTextInputLayout;
     private TextInputLayout bTextInputLayout;
-    private TextInputLayout cTextInputLayout;
 
     private EditText mTitleField;
-    private EditText mNoField;
     private EditText mMessageField;
 
+    private Button mButton;
     private ViewPager mViewPager;
     private MyPagerAdapter mMyPagerAdapter;
 
@@ -53,7 +57,7 @@ public class NFCCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_detail_input_view);
 
-        final UUID cardId = (UUID) getIntent().getSerializableExtra(EXTRA_CARD_ID);
+        UUID cardId = (UUID) getIntent().getSerializableExtra(EXTRA_CARD_ID);
         mCard = CardLab.get(this).getCard(cardId);
 
         Toolbar toolbar = findViewById(R.id.toolbar_card_detail);
@@ -67,71 +71,22 @@ public class NFCCardActivity extends AppCompatActivity {
         aTextInputLayout = findViewById(R.id.a_textinputlayout);
         mTitleField = aTextInputLayout.getEditText();
         mTitleField.setText(mCard.getTitle());
-        mTitleField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mCard.setTitle(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
         bTextInputLayout = findViewById(R.id.b_textinputlayout);
-        mNoField = bTextInputLayout.getEditText();
-        mNoField.setText(mCard.getNo());
-        mNoField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mCard.setNo(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        cTextInputLayout = findViewById(R.id.c_textinputlayout);
-        cTextInputLayout.setHint("备注");
-        mMessageField = cTextInputLayout.getEditText();
+        bTextInputLayout.setHint("备注");
+        mMessageField = bTextInputLayout.getEditText();
         mMessageField.setText(mCard.getMessage());
-        mMessageField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mCard.setMessage(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
         titles.add(getString(R.string.original_information));
         titles.add(getString(R.string.card_information));
         titles.add(getString(R.string.transaction_information));
 
-        mFragments.add(0, new TabLeftFragment());
-        mFragments.add(1, new TabMiddleFragment());
-        mFragments.add(2, new TabRightFragment());
+        mLeftFragment = new TabLeftFragment();
+        mMiddleFragment = new TabMiddleFragment();
+        mRightFragment = new TabRightFragment();
+        mFragments.add(0, mLeftFragment);
+        mFragments.add(1, mMiddleFragment);
+        mFragments.add(2, mRightFragment);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
 
@@ -139,7 +94,24 @@ public class NFCCardActivity extends AppCompatActivity {
                 titles, NFCCardActivity.this);
         mViewPager = findViewById(R.id.vp_viewpager);
         mViewPager.setAdapter(mMyPagerAdapter);
+        mViewPager.setCurrentItem(1);
 
         tabLayout.setupWithViewPager(mViewPager);
+
+        mButton = findViewById(R.id.save);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCard.setTitle(mTitleField.getText().toString());
+                mCard.setMessage(mMessageField.getText().toString());
+                CardLab.get(NFCCardActivity.this).updateCard(mCard);
+
+                mCard.setOriginalInformation(mLeftFragment.getTextInformation());
+                mCard.setCardInformation(mMiddleFragment.getTextInformation());
+                mCard.setTransactionInformation(mRightFragment.getTextInformation());
+
+                Toast.makeText(NFCCardActivity.this, R.string.confirm, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

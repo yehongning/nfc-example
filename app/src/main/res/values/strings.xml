@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">NFC-Example</string>
     <string name="fragment_card_title">Detail or Modification</string>
+    <string name="brief">Brief</string>
+    <string name="detail">Detail</string>
     <string name="fragment_about_us">About us</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,7 +14,7 @@
     <string name="card_card_no_hint">Input the card`s number</string>
     <string name="card_message_hint">Input the card`s message</string>
     <string name="card_number_label">The number of this card</string>
-    <string name="card_confirm_label">Confirm</string>
+    <string name="card_save_label">Save</string>
 
     <string name="cards">Cards</string>
     <string name="management">Management</string>
@@ -27,8 +29,11 @@
     <string name="open_source">Open Source - Apache License v2</string>
 
     <string name="confirm">Succeed!</string>
+    <string name="simulate">Simulate</string>
+    <string name="stop_simulating">Stop simulating</string>
 
     <string name="original_information">Original Information</string>
     <string name="card_information">Card Information</string>
     <string name="transaction_information">Transaction_Information</string>
+
 </resources>

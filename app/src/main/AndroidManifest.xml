@@ -23,13 +23,11 @@
             android:name=".NFCCardActivity"
             android:label="@string/fragment_card_title"
             android:parentActivityName=".NFCMainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/fragment_about_us"
             android:parentActivityName=".NFCMainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 </manifest>

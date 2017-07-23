@@ -3,15 +3,16 @@ package cc.metapro.nfc;
 import java.util.UUID;
 
 /**
- * Created by ASUS on 2017/7/15.
+ * Created by Boollean on 2017/7/15.
  */
 
 public class Card {
-
+    private UUID mId;
     private String mTitle;
     private String mMessage;
-    private String mNo;
-    private UUID mId;
+    private String mOriginalInformation;
+    private String mCardInformation;
+    private String mTransactionInformation;
 
     public Card() {
         this(UUID.randomUUID());
@@ -29,8 +30,8 @@ public class Card {
         return mTitle;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+    public void setTitle(String Title) {
+        mTitle = Title;
     }
 
     public String getMessage() {
@@ -41,12 +42,28 @@ public class Card {
         mMessage = message;
     }
 
-    public String getNo() {
-        return mNo;
+    public String getOriginalInformation() {
+        return mOriginalInformation;
     }
 
-    public void setNo(String no) {
-        mNo = no;
+    public void setOriginalInformation(String originalInformation) {
+        mOriginalInformation = originalInformation;
+    }
+
+    public String getCardInformation() {
+        return mCardInformation;
+    }
+
+    public void setCardInformation(String cardInformation) {
+        mCardInformation = cardInformation;
+    }
+
+    public String getTransactionInformation() {
+        return mTransactionInformation;
+    }
+
+    public void setTransactionInformation(String transactionInformation) {
+        mTransactionInformation = transactionInformation;
     }
 
 }

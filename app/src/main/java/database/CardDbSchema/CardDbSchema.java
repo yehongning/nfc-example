@@ -11,8 +11,10 @@ public class CardDbSchema {
         public static final class Cols {
             public static final String UUID = "uuid";
             public static final String TITLE = "title";
-            public static final String NO = "no";
             public static final String MESSAGE = "message";
+            public static final String OriginalInformation = "original";
+            public static final String CardInformation = "card";
+            public static final String TransactionInformation = "tran";
         }
     }
 }

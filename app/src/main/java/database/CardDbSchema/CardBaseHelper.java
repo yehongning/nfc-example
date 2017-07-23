@@ -20,11 +20,13 @@ public class CardBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CardTable.NAME + "(" + " _no integer primary key autoincrement, " +
+        db.execSQL("create table " + CardTable.NAME + "(" + " _id integer primary key autoincrement," +
                 CardTable.Cols.UUID + ", " +
                 CardTable.Cols.TITLE + ", " +
-                CardTable.Cols.NO + ", " +
-                CardTable.Cols.MESSAGE +
+                CardTable.Cols.MESSAGE + ", " +
+                CardTable.Cols.OriginalInformation + ", " +
+                CardTable.Cols.CardInformation + ", " +
+                CardTable.Cols.TransactionInformation +
                 ")"
         );
     }

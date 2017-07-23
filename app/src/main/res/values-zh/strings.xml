@@ -13,7 +13,7 @@
     <string name="card_card_no_hint">输入卡片号</string>
     <string name="card_message_hint">输入卡片信息</string>
     <string name="card_number_label">数量</string>
-    <string name="card_confirm_label">确认</string>
+    <string name="card_save_label">保存</string>
 
     <string name="cards">NFC卡</string>
     <string name="management">管理</string>
@@ -24,10 +24,12 @@
     <string name="version">版本号 0.03</string>
     <string name="github_java">Github Repo (Java)</string>
     <string name="github_kotlin">Github Repo (Kotlin)</string>
-    <string name="donate">捐赠</string>
+    <string name="donate">捐赠（支付宝）</string>
     <string name="open_source">Open Source - Apache License v2</string>
 
     <string name="confirm">保存成功!</string>
+    <string name="simulate">模拟</string>
+    <string name="stop_simulating">停止模拟</string>
 
     <string name="original_information">原始信息</string>
     <string name="card_information">卡内信息</string>

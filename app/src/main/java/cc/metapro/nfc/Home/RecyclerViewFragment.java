@@ -23,7 +23,6 @@ import java.util.List;
  */
 
 public class RecyclerViewFragment extends Fragment {
-
     private RecyclerView mRecyclerView;
     private ItemTouchHelper mItemTouchHelper;
     private CardAdapter mAdapter;

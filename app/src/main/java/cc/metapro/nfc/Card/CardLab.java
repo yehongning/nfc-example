@@ -18,9 +18,7 @@ import database.CardDbSchema.CardDbSchema.CardTable;
  */
 
 public class CardLab {
-
     private static CardLab sCardLab;
-
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
@@ -56,7 +54,6 @@ public class CardLab {
 
     public List<Card> getCards() {
         List<Card> cards = new ArrayList<>();
-
         CardCursorWrapper cursor = queryCards(null, null);
 
         try {

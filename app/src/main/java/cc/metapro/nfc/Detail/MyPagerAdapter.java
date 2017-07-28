@@ -4,11 +4,10 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
 import java.util.List;
 
 /**
- * Created by ASUS on 2017/7/19.
+ * Created by Boollean on 2017/7/19.
  */
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
@@ -18,6 +17,10 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     public MyPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> title, Context context) {
         super(fm);
+        setAdapter(fragments,title,context);
+    }
+
+    public void setAdapter(List<Fragment> fragments,List<String> title,Context context){
         mFragments = fragments;
         mTitle = title;
         mContext = context;

@@ -90,7 +90,7 @@ public class NFCCardActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
 
-        mMyPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), mFragments,
+        mMyPagerAdapter =new MyPagerAdapter(getSupportFragmentManager(), mFragments,
                 titles, NFCCardActivity.this);
         mViewPager = findViewById(R.id.vp_viewpager);
         mViewPager.setAdapter(mMyPagerAdapter);

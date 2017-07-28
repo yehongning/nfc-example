@@ -12,13 +12,14 @@ import android.view.View;
  */
 
 public class MyDialogFragment extends AppCompatDialogFragment {
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view= LayoutInflater.from(getActivity()).inflate(R.layout.dialog_simulate,null);
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("模拟中..")
+                .setTitle(R.string.simulating)
                 .setPositiveButton(android.R.string.cancel,null)
                 .create();
     }

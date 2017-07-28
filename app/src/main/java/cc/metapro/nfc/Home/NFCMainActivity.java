@@ -1,9 +1,14 @@
 package cc.metapro.nfc;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.annotation.SuppressLint;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -21,6 +26,7 @@ import android.widget.ToggleButton;
 
 public class NFCMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private NfcAdapter mNfcAdapter=null;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,6 +40,17 @@ public class NFCMainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, new RecyclerViewFragment())
                     .commit();
+        }
+
+        mNfcAdapter=NfcAdapter.getDefaultAdapter(this);
+        if(mNfcAdapter==null) {
+            Handler handler = new Handler(Looper.getMainLooper());
+//            handler.post(
+//                    {
+//                            FragmentManager manager=getFragmentManager();
+//                            MyDialogFragment dialogFragment=new MyDialogFragment();
+//                            dialogFragment.show(manager,DIALOG_SIMULATE);
+//        });
         }
     }
 

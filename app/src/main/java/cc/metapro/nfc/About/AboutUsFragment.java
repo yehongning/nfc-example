@@ -5,7 +5,7 @@ import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 
 /**
- * Created by ASUS on 2017/7/17.
+ * Created by Boollean on 2017/7/17.
  */
 
 public class AboutUsFragment extends PreferenceFragment {

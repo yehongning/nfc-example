@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Created by ASUS on 2017/7/17.
+ * Created by Boollean on 2017/7/17.
  */
 
 public class AboutUsActivity extends AppCompatActivity {
